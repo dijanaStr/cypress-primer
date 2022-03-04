@@ -1,0 +1,18 @@
+{
+    "CommonElements" : {
+        "emailField" : "#email",
+        "passwordField" : "#password",
+        "submitBtn" : "button"
+
+    },
+    "Header" : {
+        "button" : ".nav-link"
+    },
+    "Register" : {
+        "firstName" : "#first-name",
+        "lastName" : "#last-name",
+        "passwordConfirmationField" :"#password-confirmation",
+        "termsCheckboxBtn" : ":checkbox"
+       
+    }
+}
