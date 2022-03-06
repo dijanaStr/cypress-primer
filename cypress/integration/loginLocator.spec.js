@@ -7,7 +7,9 @@ describe("login test", () => {
 let userData = {
   name: faker.name.findName(),
   randomEmail: faker.internet.email(),
-  randomPassword: faker.internet.password()
+  randomPassword: faker.internet.password(),
+  userFirstName : faker.name.firstName (),
+  userLastName : faker.name.lastName ()
 }
 
   before("visit app", () => {
@@ -18,7 +20,7 @@ let userData = {
       console.log(userData.randomName);
       cy.get(Locators.Header.button).eq(1).click();
      cy.get(Locators.CommonElements.emailField).type(userData.randomEmail);
-      cy.get(Locators.CommonElements.passwordField).type("dijana123")
+      cy.get(Locators.CommonElements.passwordField).type(userData.randomPassword)
       cy.get(Locators.CommonElements.submitBtn).click();
     });
   

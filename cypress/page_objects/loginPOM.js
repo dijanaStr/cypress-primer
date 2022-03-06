@@ -16,11 +16,11 @@ export default class LoginPage {
         return cy.get(".nav-link");
     }
 
-    login(email, password) {
+   login(email, password) {
         this.email.type(email);
         this.password.type(password);
         this.submitBtn.click();
-    }
+    } 
 }
 
 export const loginPage = new LoginPage();
