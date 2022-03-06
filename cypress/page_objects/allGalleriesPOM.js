@@ -8,7 +8,7 @@ export default class AllGalleriesPage {
     }
    
 
-    allGalleries(search, filter, loadMore) {
+    allGalleries(search, filter) {
         this.search.type(search);
         this.filter.click();
     }

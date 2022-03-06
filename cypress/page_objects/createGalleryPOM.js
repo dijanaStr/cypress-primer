@@ -11,7 +11,7 @@ export default class CreateGalleryPage {
     get submitBtn() {
         return cy.get('button');
     }
-
+    
    login(email, password) {
         this.email.type(email);
         this.password.type(password);
