@@ -33,9 +33,7 @@ registerWithoutFirstName(lastName, email, password, passwordConfirmation) {
     this.checkbox.click();
     this.submitBtn.click();
 }
-clickRegisterButton() {
-    this.registerButton.click()
-}
+
 registerWithoutLastName(firstName, email, password, passwordConfirmation) {
     this.firstName.type(firstName);
     this.email.type(email);
@@ -44,9 +42,7 @@ registerWithoutLastName(firstName, email, password, passwordConfirmation) {
     this.checkbox.click();
     this.submitBtn.click();
 }
-clickRegisterButton() {
-    this.registerButton.click()
-}
+
 registerWithouTermsAndConditions(firstName, lastName, email, password, passwordConfirmation) {
     this.firstName.type(firstName);
     this.lastName.type(lastName);
@@ -55,9 +51,7 @@ registerWithouTermsAndConditions(firstName, lastName, email, password, passwordC
     this.passwordConfirmation.type(passwordConfirmation);
     this.submitBtn.click();
 }
-clickRegisterButton() {
-    this.registerButton.click()
-}
+
 register(firstName, lastName, email, password, passwordConfirmation) {
     this.firstName.type(firstName);
     this.lastName.type(lastName);
@@ -67,9 +61,8 @@ register(firstName, lastName, email, password, passwordConfirmation) {
     this.checkbox.click();
     this.submitBtn.click();
 }
-clickRegisterButton() {
-    this.registerButton.click()
+
 }
-}
+
 
 export const registerPage = new RegisterPage();
