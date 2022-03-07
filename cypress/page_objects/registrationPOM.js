@@ -1,7 +1,10 @@
-export default class RegisterPage {
+class RegisterPage {
 
 get registerButton() {
      return cy.get('a[href="/register"]')
+}
+get registerHeading() {
+    return cy.get('h1');
 }
 
 get firstName() {
@@ -58,7 +61,7 @@ register(firstName, lastName, email, password, passwordConfirmation) {
     this.email.type(email);
     this.password.type(password);
     this.passwordConfirmation.type(passwordConfirmation);
-    this.checkbox.click();
+    this.checkbox.check();
     this.submitBtn.click();
 }
 

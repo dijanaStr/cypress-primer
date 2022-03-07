@@ -1,4 +1,5 @@
 export default class LoginPage {
+   
 
     get email() {
         return cy.get('#email');

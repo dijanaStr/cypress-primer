@@ -1,17 +1,20 @@
-export default class AllGalleriesPage {
+class AllGalleriesPage {
 
+    get allGalleriesHeading() {
+        return cy.get('h1');
+    }
     get search() {
         return cy.get("input[type='text']");
     }
-    get filter() {
-        return cy.get("button[type='button']");
+    get filterBtn() {
+        return cy.get('button').first();
     }
-    get loadMore() {
-        return cy.get('button[class="btn btn-custom"]')
+    get loadMoreBtn() {
+        return cy.get('button').last();
     }
    
 
-    allGalleries(search, filter) {
+    allGalleries(search, filterBtn) {
         this.search.type(search);
         this.filter.click();
     }
