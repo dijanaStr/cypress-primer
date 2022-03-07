@@ -8,7 +8,7 @@ describe("registration test", () => {
       userEmail: faker.internet.email(),
       userPassword: faker.internet.password(),
       userFirstName : faker.name.firstName (),
-      userLastName : faker.name.lastName ()
+      userLastName : faker.name.lastName (),
     }
 
   beforeEach('visit register page', () => {
@@ -17,11 +17,11 @@ describe("registration test", () => {
   })
  
    it("register without first name", () => {
-     registerPage.registerwithoutfirstname(userData.userLastName, userData.userEmail, userData.userPassword, userData.userPassword)
+     registerPage.registerWithoutFirstName(userData.userLastName, userData.userEmail, userData.userPassword, userData.userPassword)
    });
  
    it("register without last name", () => {
-     registerPage.registerwithoutlastname(userData.userFirstName, userData.userEmail, userData.userPassword, userData.userPassword)
+     registerPage.registerWithoutLastName(userData.userFirstName, userData.userEmail, userData.userPassword, userData.userPassword)
    });
  
    it("register with invalid email", () => {
@@ -33,7 +33,7 @@ describe("registration test", () => {
    });
  
    it("register withhout checking terms and conditions", () => {
-     registerPage.registerwithouttermsandconditions(userData.userFirstName, userData.userLastName, userData.userEmail, userData.userPassword, userData.userPassword)
+     registerPage.registerWithouTermsAndConditions(userData.userFirstName, userData.userLastName, userData.userEmail, userData.userPassword, userData.userPassword)
    });
  
    it("register with valid data", () => {

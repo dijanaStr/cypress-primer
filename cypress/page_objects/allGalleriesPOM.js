@@ -4,7 +4,10 @@ export default class AllGalleriesPage {
         return cy.get("input[type='text']");
     }
     get filter() {
-        return cy.get("button[type='button']")
+        return cy.get("button[type='button']");
+    }
+    get loadMore() {
+        return cy.get('button[class="btn btn-custom"]')
     }
    
 

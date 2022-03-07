@@ -25,7 +25,7 @@ get checkbox() {
 get submitBtn() {
     return cy.get('button');
 }
-registerwithoutfirstname(lastName, email, password, passwordConfirmation) {
+registerWithoutFirstName(lastName, email, password, passwordConfirmation) {
     this.lastName.type(lastName);
     this.email.type(email);
     this.password.type(password);
@@ -36,7 +36,7 @@ registerwithoutfirstname(lastName, email, password, passwordConfirmation) {
 clickRegisterButton() {
     this.registerButton.click()
 }
-registerwithoutlastname(firstName, email, password, passwordConfirmation) {
+registerWithoutLastName(firstName, email, password, passwordConfirmation) {
     this.firstName.type(firstName);
     this.email.type(email);
     this.password.type(password);
@@ -47,7 +47,7 @@ registerwithoutlastname(firstName, email, password, passwordConfirmation) {
 clickRegisterButton() {
     this.registerButton.click()
 }
-registerwithouttermsandconditions(firstName, lastName, email, password, passwordConfirmation) {
+registerWithouTermsAndConditions(firstName, lastName, email, password, passwordConfirmation) {
     this.firstName.type(firstName);
     this.lastName.type(lastName);
     this.email.type(email);
