@@ -12,6 +12,9 @@ class AllGalleriesPage {
     get loadMoreBtn() {
         return cy.get('button').last();
     }
+    get allGalleriesTitle() {
+        return cy.get('h1')
+    }
    
 
     allGalleries(search, filterBtn) {

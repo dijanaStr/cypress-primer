@@ -9,9 +9,9 @@ export default class CreateGalleryPage {
     get images() {
         return cy.get("input[type='url']");
     }
-    get submitBtn() {
-        return cy.get("//button[contains(text(),'Submit')]")
-    }
+    get submitBtn(){
+        return cy.get('button').eq(3);
+};
     createGallery(title, description, images) {
         this.title.type(title);
         this.description.type(description);

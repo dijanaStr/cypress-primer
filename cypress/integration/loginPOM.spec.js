@@ -7,7 +7,7 @@ describe("login test POM", () => {
         cy.url().should("contains", "/login");
     });
 
-    it("login with valid credentials", () => {
+    it("login with bad credentials", () => {
         loginPage.login('dijana.strbac93@gmail.com', 'dijana12')
         cy.get('p')
         .should('be.visible')
