@@ -1,88 +1,73 @@
 
 import { createGalleryPage } from '../page_objects/createGalleryPOM';
 import { loginPage } from '../page_objects/loginPOM';
+import { faker } from "@faker-js/faker"
 
 describe("createGallery test POM", () => {
+    let galleryData = {
+        title : faker.name.title(),
+        description : faker.lorem.sentence(),
+        url : faker.image.imageUrl('.jpg'),
+        urlGif : faker.image.imageUrl('.gif'),
+        urlBmp : faker.image.imageUrl('.bmp'),
+        urlPdf : faker.image.imageUrl('.pdf'),
+        titleOneWord : faker.lorem.word(1),
+        title256Words : faker.lorem.words(256)
+
+
+    }
     beforeEach('visit login page', () => {
         cy.visit('/login');
-        cy.url().should('contain', '/login');
-     
+        loginPage.login('dijana.strbac93@gmail.com', 'dijana123');
+        cy.get('a[href="/create"]').should('be.visible')
+        cy.visit('/create')
         })
        
-       
 it("visit create gallery page", () => {
-    cy.visit('/create')
-    loginPage.login('dijana.strbac93@gmail.com', 'dijana123');
-    cy.wait(1000);
-    cy.get('.nav-link').eq(2).click();
-    createGalleryPage.createGallery('title', 'description', 'https://tinypng.com/images/social/website.jpg')
+    createGalleryPage.createGallery(galleryData.title, galleryData.description, galleryData.url)
 
     });
 
 it("create gallery without title", () => {
-    cy.visit('/create')
-    loginPage.login('dijana.strbac93@gmail.com', 'dijana123');
-    cy.wait(1000);
-    cy.get('.nav-link').eq(2).click();
-    createGalleryPage.createGallery(' ', 'description', 'https://tinypng.com/images/social/website.jpg')
-    cy.get('p')
-    .should('have.text', 'The title field is required.')
+    createGalleryPage.createGallery(' ', galleryData.description, galleryData.url)
 })
 
 it("create gallery with spaces on fields", () => {
-    cy.visit('/create')
-    loginPage.login('dijana.strbac93@gmail.com', 'dijana123');
-    cy.wait(1000);
-    cy.get('.nav-link').eq(2).click();
     createGalleryPage.createGallery(' ', ' ', ' ')
 })
 
 it("create gallery without image", () => {
-    cy.visit('/create')
-    loginPage.login('dijana.strbac93@gmail.com', 'dijana123');
-    cy.wait(1000);
-    cy.get('.nav-link').eq(2).click();
-    createGalleryPage.createGallery('title', 'description', ' ')
+    createGalleryPage.createGallery(galleryData.title, galleryData.description, ' ')
 })
 
 it("create gallery with 1 character in title", () => {
-    cy.visit('/create')
-    loginPage.login('dijana.strbac93@gmail.com', 'dijana123');
-    cy.wait(1000);
-    cy.get('.nav-link').eq(2).click();
-    createGalleryPage.createGallery('t', 'description', 'https://tinypng.com/images/social/website.jpg')
+    createGalleryPage.createGallery(galleryData.titleOneWord, galleryData.title, galleryData.url)
     cy.get('p')
     .should('have.text', 'The title must be at least 2 characters.')
 })
 
 it("create gallery with giff image", () => {
-    cy.visit('/create')
-    loginPage.login('dijana.strbac93@gmail.com', 'dijana123');
-    cy.wait(1000);
-    cy.get('.nav-link').eq(2).click();
-    createGalleryPage.createGallery('title', 'description', 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5eeea355389655.59822ff824b72.gif')
+    createGalleryPage.createGallery(galleryData.title, galleryData.description, galleryData.urlGif)
     cy.get('p')
     .should('have.text', 'Wrong format of image')
 })
 
 it("create gallery with bmp image", () => {
-    cy.visit('/create')
-    loginPage.login('dijana.strbac93@gmail.com', 'dijana123');
-    cy.wait(1000);
-    cy.get('.nav-link').eq(2).click();
-    createGalleryPage.createGallery('title', 'description', 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5eeea355389655.59822ff824b72.bmp')
+    createGalleryPage.createGallery(galleryData.title, galleryData.description, galleryData.urlBmp)
     cy.get('p')
     .should('have.text', 'Wrong format of image')
 })
 
 it("create gallery with pdf image", () => {
-    cy.visit('/create')
-    loginPage.login('dijana.strbac93@gmail.com', 'dijana123');
-    cy.wait(1000);
-    cy.get('.nav-link').eq(2).click();
-    createGalleryPage.createGallery('title', 'description', 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5eeea355389655.59822ff824b72.pdf')
+    createGalleryPage.createGallery(galleryData.title, galleryData.description, galleryData.urlPdf)
     cy.get('p')
     .should('have.text', 'Wrong format of image')
+})
+
+it.only('create gallery with 256 characters in title', () => {
+    createGalleryPage.createGallery(galleryData.title256Words, galleryData.description, galleryData.url)
+    cy.get('p')
+    .should('have.text', 'The title may not be greater than 255 characters.')
 })
 })
 
