@@ -64,7 +64,7 @@ it("create gallery with pdf image", () => {
     .should('have.text', 'Wrong format of image')
 })
 
-it.only('create gallery with 256 characters in title', () => {
+it('create gallery with 256 characters in title', () => {
     createGalleryPage.createGallery(galleryData.title256Words, galleryData.description, galleryData.url)
     cy.get('p')
     .should('have.text', 'The title may not be greater than 255 characters.')
