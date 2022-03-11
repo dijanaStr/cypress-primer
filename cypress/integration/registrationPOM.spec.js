@@ -16,6 +16,27 @@ describe("registration test", () => {
       cy.url().should('contain', '/register');
   })
  
+  it.only('register with valid data', () => {
+    cy.intercept({
+        method: 'POST',
+        url: 'https://gallery-api.vivifyideas.com/api/auth/register',
+    }).as('registerRequest');
+
+    registerPage.register(
+        userData.userFirstName,
+        userData.userLastName,
+        userData.userEmail,
+        userData.userPassword
+    );
+    cy.wait('@registerRequest').then((interception) => {
+        expect(interception.request.body.first_name).eq(userData.userFirstName);
+        expect(interception.request.body.last_name).eq(userData.userLastName);
+        expect(interception.request.body.email).eq(userData.userEmail);
+        expect(interception.request.body.password).eq(userData.userPassword);
+        expect(interception.request.body.password_confirmation).eq(userData.userPassword);
+        expect(interception.response.statusCode).eq(200)
+    })
+
    it("register without first name", () => {
      registerPage.registerWithoutFirstName(userData.userLastName, userData.userEmail, userData.userPassword, userData.userPassword)
    });
@@ -55,4 +76,5 @@ describe("registration test", () => {
      .and('have.css', 'border-color', 'rgb(245, 198, 203)');
    });
 
- });
+ })
+})

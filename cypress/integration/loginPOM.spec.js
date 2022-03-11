@@ -7,16 +7,20 @@ describe("login test POM", () => {
         cy.url().should("contains", "/login");
     });
 
-    it("login with bad credentials", () => {
-        loginPage.login('dijana.strbac93@gmail.com', 'dijana12')
-        cy.get('p')
-        .should('be.visible')
-        .and('have.text', 'Bad Credentials')
-        .and('have.css', 'border-color', 'rgb(245, 198, 203)');
+    it("login with valid credentials", () => {
+        cy.intercept({
+            method: 'POST',
+            url: 'https://gallery-api.vivifyideas.com/api/auth/login'
+        })
+        .as('loginRequest');
+        loginPage.login('dijana.strbac93@gmail.com', 'dijana123');
+        cy.wait('@loginRequest').then((interceptObj) => {
+            console.log(interceptObj);
+        })
         
     });
 
-    xit('logout', () => {
+    it('logout', () => {
         loginPage.logoutBtn.should('have.length', 4);
         loginPage.logoutBtn.eq(3).click();
 // cy.get(Locators.Header.button).should("have.length", 4)
